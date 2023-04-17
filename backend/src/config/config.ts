@@ -1,12 +1,12 @@
 import { config as dotenvConfig } from "dotenv";
 
-interface Config {
+type Config = {
   env?: string;
   port?: number;
   databaseUrl?: string;
   jwtSecret?: string;
   sessionSecret?: string;
-}
+};
 
 dotenvConfig();
 

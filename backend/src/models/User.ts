@@ -22,11 +22,11 @@ export const userSchema = z.object({
     .min(8),
 });
 
-export interface User {
+export type User = {
   id: number;
   name: string;
   email: string;
   password: string;
   createAt: Date;
   updateAt: Date;
-}
+};

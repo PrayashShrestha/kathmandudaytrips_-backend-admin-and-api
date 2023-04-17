@@ -2,11 +2,16 @@ import { NextFunction, Response } from "express";
 import { Request } from "express";
 import { CustomError } from "../utils/errors/index";
 
-export const errorHandler = (err: Error, req: Request, res: Response) => {
+export const errorHandlerMiddleware = (
+  err: Error,
+  req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
   if (err instanceof CustomError) {
     return res.status(err.statusCode).json({ errors: err.serializeError() });
   }
   return res.status(500).json({
-    errors: [{ message: "Internal Server Error" }],
+    errors: [{ message: "Internal Server Error: " + err.message }],
   });
 };
